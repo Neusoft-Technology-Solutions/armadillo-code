@@ -66,7 +66,10 @@
 
 #if (__cplusplus >= 201103L)
   #if !defined(ARMA_USE_CXX11)
+  // Android does not support all C++11 featues
+  #if !defined(__ANDROID__)
     #define ARMA_USE_CXX11
+  #endif
   #endif
 #endif
 
@@ -189,10 +192,12 @@
   
   #if defined(__GXX_EXPERIMENTAL_CXX0X__)
     #if !defined(ARMA_USE_CXX11)
+    #if !defined(__ANDROID__)
       #define ARMA_USE_CXX11
     #endif
+    #endif
   #endif
-  
+
   #if defined(ARMA_USE_CXX11)
     #if (ARMA_GCC_VERSION < 40700) && !defined(__clang__)
       #pragma message ("Your C++ compiler is in C++11 mode, but it has incomplete support for C++11 features")
