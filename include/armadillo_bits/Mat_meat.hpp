@@ -45,6 +45,7 @@ Mat<eT>::Mat()
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
   }
@@ -61,6 +62,7 @@ Mat<eT>::Mat(const uword in_n_rows, const uword in_n_cols)
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
   
@@ -318,6 +320,7 @@ Mat<eT>::Mat(const char* text)
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
   
@@ -700,6 +703,7 @@ Mat<eT>::Mat(const Mat<eT>& in_mat)
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint(arma_boost::format("this = %x   in_mat = %x") % this % &in_mat);
   
@@ -1012,6 +1016,7 @@ Mat<eT>::Mat(eT* aux_mem, const uword aux_n_rows, const uword aux_n_cols, const 
   , vec_state( 0                                     )
   , mem_state( copy_aux_mem ? 0 : ( strict ? 2 : 1 ) )
   , mem      ( copy_aux_mem ? 0 : aux_mem            )
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
   
@@ -1628,6 +1633,7 @@ Mat<eT>::Mat(const subview<eT>& X)
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
   
@@ -3781,6 +3787,7 @@ Mat<eT>::Mat(const Gen<T1, gen_type>& X)
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
   
@@ -3908,6 +3915,7 @@ Mat<eT>::Mat(const Op<T1, op_type>& X)
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
 
@@ -4037,6 +4045,7 @@ Mat<eT>::Mat(const eOp<T1, eop_type>& X)
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
   
@@ -4293,6 +4302,7 @@ Mat<eT>::Mat(const Glue<T1, T2, glue_type>& X)
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
   
@@ -4459,6 +4469,7 @@ Mat<eT>::Mat(const eGlue<T1, T2, eglue_type>& X)
   , vec_state(0)
   , mem_state(0)
   , mem()
+  , mem_local()
   {
   arma_extra_debug_sigprint_this(this);
   
